@@ -1,0 +1,15 @@
+.complete{
+    text-decoration: line-through;
+    text-decoration-color: #023047;
+  
+}
+.item{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+} 
+
+p{
+    font-family: cursive;
+}
