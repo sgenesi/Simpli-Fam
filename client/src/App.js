@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import "./App.css";
 import Item from "./components/Item";
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-
+import Login from "./Pages/Login";
 import Footer from './components/Footer';
 import { v4 as uuidv4 } from "uuid";
+// import Calendar from './components/Calendar';
+import Nav from './components/Nav';
 
 import './App.css';
+
+
+
 
 const arr = () => {
   let data = localStorage.getItem("data");
@@ -18,6 +23,19 @@ const client = new ApolloClient({
   uri: 'https://48p1r2roz4.sse.codesandbox.io',
   cache: new InMemoryCache()
 });
+
+// function App() {
+//   return (
+//     <div>
+//       {/* <Nav></Nav> */}
+//       <main>
+//         <Login></Login>
+//       </main>
+//     </div>
+// //   );
+// }
+
+
 
 function App() {
   const [item, setItem] = useState("");
@@ -75,10 +93,15 @@ function App() {
           />
         ))}
       </div>
+      <Login></Login>
       <Footer></Footer>
     </div >
   );
 }
+
+
+
+
 
 export default App;
 
