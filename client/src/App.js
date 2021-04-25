@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Item from "./components/Item";
+import Calendar from 'react-calendar';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import Footer from './components/Footer';
@@ -19,9 +20,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
+
+
 function App() {
   const [item, setItem] = useState("");
   const [list, setList] = useState(arr);
+  const [value, onChange] = useState(new Date());
 
   const handleSubmit = (e) => {
     const newItem = {
@@ -46,6 +50,13 @@ function App() {
 
   return (
     <div className="App">
+
+      <div>
+        <Calendar
+          onChange={onChange}
+          value={value}
+        />
+      </div>
 
       <h1>Grocery List</h1>
       <form onSubmit={handleSubmit}>

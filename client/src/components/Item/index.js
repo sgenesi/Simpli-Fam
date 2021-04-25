@@ -56,6 +56,7 @@ const Item = ({ id, item, list, setList, complete }) => {
             <img
                 onClick={() => handleComplete(id)}
                 src="https://img.icons8.com/metro/26/000000/checkmark.png"
+                alt="Complete"
             />
             <img
                 onClick={() => remove(id)}
