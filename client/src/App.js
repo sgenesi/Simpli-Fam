@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 import { v4 as uuidv4 } from "uuid";
 // import Calendar from './components/Calendar';
 import Nav from './components/Nav';
+import Signup from "./Pages/Signup";
+
 
 import './App.css';
 
@@ -94,6 +96,7 @@ function App() {
         ))}
       </div>
       <Login></Login>
+      <Signup></Signup>
       <Footer></Footer>
     </div >
   );

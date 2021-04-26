@@ -1,80 +1,51 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_USER } from '../utils/mutations';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import "./Login.css";
+
 
 import Auth from '../utils/auth';
 
-const Login = props => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  // const [login, { error }] = useMutation(LOGIN_USER);
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  // update state based on form input changes
-  const handleChange = event => {
-    const { name, value } = event.target;
+  function validateForm() {
+    return email.length > 0 && password.length > 0;
+  }
 
-    setFormState({
-      ...formState,
-      [name]: value
-    });
-  };
-
-  // submit form
-  const handleFormSubmit = async event => {
-    // event.preventDefault();
-
-    // try {
-    //   const { data } = await login({
-    //     variables: { ...formState }
-    //   });
-
-    //   Auth.login(data.login.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
-
-    // clear form values
-    setFormState({
-      email: '',
-      password: ''
-    });
-  };
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-md-6">
-        <div className="card">
-          <h4 className="card-header">Login</h4>
-          <div className="card-body">
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className="form-input"
-                placeholder="Your email"
-                name="email"
-                type="email"
-                id="email"
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="******"
-                name="password"
-                type="password"
-                id="password"
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <button className="btn d-block w-100" type="submit">
-                Submit
-              </button>
-            </form>
-
-            {/* {error && <div>Login failed</div>} */}
-          </div>
-        </div>
-      </div>
-    </main>
+    <div className="Login">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group size="lg" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            autoFocus
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+        <Button block size="lg" type="submit" disabled={!validateForm()}>
+          Login
+        </Button>
+      </Form>
+    </div>
   );
-};
+}
 
-export default Login;
+// export default Login;
