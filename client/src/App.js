@@ -274,12 +274,12 @@ function App() {
           </div>
         </div>
 
-        <div className="App">
+        <div>
 
-          <h1>Family Calendar</h1>
+          <h1 class="App">Family Calendar</h1>
           <div>
             <Fragment>
-                <div className='demo'>
+                <div className='demo calendar-margin'>
                   <RevoCalendar
                     events={eventList}
                     style={{
@@ -400,6 +400,7 @@ function App() {
             </Fragment>
           </div>
 
+          <div className="App">
           <h1>Grocery List</h1>
           <form onSubmit={handleSubmit}>
             <input
@@ -428,6 +429,7 @@ function App() {
           </div>
           <Footer></Footer>
         </div >
+        </div>
       </Router>
     </ApolloProvider>
   );
