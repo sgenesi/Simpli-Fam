@@ -20,8 +20,8 @@ const Header = () => {
             <Navbar.Brand href="#home">
                 <img
                     src={Logo}
-                    width="150"
-                    height="120"
+                    width="200"
+                    height="140"
                     className="d-inline-block align-top"
                     alt="SimpliFam logo"
                 />
