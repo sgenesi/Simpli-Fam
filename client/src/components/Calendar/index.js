@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
 
-function MyApp() {
-    const [value, onChange] = useState(new Date());
-
-    return (
-        <div>
-            <Calendar
-                onChange={onChange}
-                value={value}
-            />
-        </div>
-    );
-}
-
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+)
