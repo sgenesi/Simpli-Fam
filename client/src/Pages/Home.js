@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from '../components/Calendar';
+import FamilyCalendar from '../components/Calendar';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
@@ -15,14 +15,14 @@ const Home = () => {
             <div className="flex-row justify-space-between">
                 {loggedIn && (
                     <div className="col-12 mb-3">
-                        <Calendar />
+                        <FamilyCalendar />
                     </div>
                 )}
                 <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
                     {/* {loading ? (
                         <div>Loading...</div>
                     ) : ( */}
-                    <Calendar />
+                    <FamilyCalendar />
                     )
                 </div>
 
