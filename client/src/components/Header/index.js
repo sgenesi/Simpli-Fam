@@ -35,7 +35,7 @@ const Header = () => {
                         <Dropdown.Toggle split variant="info" id="dropdown-split-basic" />
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Grocery List</Dropdown.Item>
+                            <Dropdown.Item href="#/GroceryList">Grocery List</Dropdown.Item>
                             <Dropdown.Item href="#/action-2">Family Notes</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
