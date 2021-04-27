@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import Logo from "../../assets/images/Logo.png";
 import Auth from '../../utils/auth';
 import Navbar from 'react-bootstrap/Navbar'
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
     };
 
     return (
-        <Navbar bg="#FFB703" expand="lg">
+        <Navbar bg="warning" expand="lg" sticky="top">
             <Navbar.Brand href="#home">
                 <img
                     src={Logo}
@@ -28,11 +29,16 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <NavDropdown title="Pages" id="basic-nav-dropdown" src="https://img.icons8.com/cotton/64/000000/menu.png"
-                        alt="Complete">
-                        <NavDropdown.Item href="#action/3.1">Grocery List</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Family Notes</NavDropdown.Item>
-                    </NavDropdown>
+                    <Dropdown as={ButtonGroup}>
+                        <Button variant="info">Pages</Button>
+
+                        <Dropdown.Toggle split variant="info" id="dropdown-split-basic" />
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">Grocery List</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Family Notes</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </Nav>
             </Navbar.Collapse>
         </Navbar >
