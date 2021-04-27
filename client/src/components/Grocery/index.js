@@ -47,7 +47,7 @@ const Item = ({ id, item, list, setList, complete }) => {
                     border: "none",
                     outline: "none",
                     backgroundColor: "transparent",
-                    color: "black",
+                    color: "#219EBC",
                     fontSize: "20px",
                 }}
                 onChange={handleItem}

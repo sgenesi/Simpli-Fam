@@ -1,0 +1,9 @@
+nav, .navbar-brand {
+    background-color: #023047;
+    font-family: Simplifica;
+    font-size: 25px;
+}
+
+li, a {
+    color: #FB8500;
+}

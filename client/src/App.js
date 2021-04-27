@@ -1,14 +1,70 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 import { ChromePicker } from 'react-color'
 import GitHubButton from 'react-github-btn'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
+import "./App.css";
+import Item from "./components/Grocery";
 import RevoCalendar from 'revo-calendar'
 import 'revo-calendar/dist/index.css'
+import styled from 'styled-components';
+import Header from './components/Header';
+import Navbar from './components/Nav';
+import Footer from './components/Footer';
+import { v4 as uuidv4 } from "uuid";
+
+import Login from './Pages/Login';
+import './App.css';
+
+const arr = () => {
+  let data = localStorage.getItem("data");
+  if (data) return JSON.parse(localStorage.getItem("data"));
+  else return [];
+};
+
+const client = new ApolloClient({
+  request: operation => {
+    const token = localStorage.getItem('id_token');
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    });
+  },
+  uri: '/graphql'
+});
 
 function App() {
+  const [item, setItem] = useState("");
+  const [list, setList] = useState(arr);
+  const [value, onChange] = useState(new Date());
+
+  const handleSubmit = (e) => {
+    const newItem = {
+      id: uuidv4(),
+      item: item,
+      complete: false,
+    };
+    e.preventDefault();
+    if (item && item.length <= 25) {
+      setList([...list, newItem]);
+      setItem("");
+    }
+  };
+
+  React.useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(list));
+  }, [list]);
+
+  const handleChange = (e) => {
+    setItem(e.target.value);
+  };
+
   var reso1 = new Date()
   reso1.setHours(17, 0, 0)
 
@@ -199,128 +255,182 @@ function App() {
     console.log('%cEventList: ', 'color: #b788f4', eventList)
   }, [eventList])
 
+  const Button = styled.button`
+  color: #023047;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid #023047;
+  border-radius: 3px;
+`;
+
   return (
-    <Fragment>
-        <div className='demo'>
-          <RevoCalendar
-            events={eventList}
-            style={{
-              borderRadius: '5px',
-              border: '5px solid var(--primaryColor)'
-            }}
-            date={new Date()}
-            deleteEvent={deleteEvent}
-            highlightToday={highlightToday}
-            lang={lang}
-            primaryColor={primaryColor}
-            secondaryColor={secondaryColor}
-            todayColor={todayColor}
-            textColor={textColor}
-            indicatorColor={indicatorColor}
-            animationSpeed={animationSpeed}
-            sidebarWidth={sidebarWidth}
-            detailWidth={detailWidth}
-            showDetailToggler={showDetailToggler}
-            showSidebarToggler={showSidebarToggler}
-            onePanelAtATime={onePanelAtATime}
-            allowDeleteEvent={allowDeleteEvent}
-            allowAddEvent={allowAddEvent}
-            openDetailsOnDateSelection={openDetailsOnDateSelection}
-            timeFormat24={timeFormat24}
-            showAllDayLabel={showAllDayLabel}
-            detailDateFormat={detailDateFormat}
-            addEvent={(date) => {
-              setNewEventDate(date)
-              setShowAddEventModal(true)
-            }}
-          />
-        </div>
-        {showAddEventModal && (
-          <div className='addEventModal'>
-            <h2>Add your own event: </h2>
-            <div className='options'>
-              <code>
-                <pre>
-                  <span className='codePink'>var </span>newEvent = {'{'}
-                </pre>
-                <pre className='tab'>
-                  name<label className='codePink'>:</label> "
-                  <input
-                    type='text'
-                    value={newEventName}
-                    onChange={(e) => setNewEventName(e.target.value)}
-                  ></input>
-                  ",
-                </pre>
-                <pre className='tab'>
-                  date<label className='codePink'>:</label>
-                  <DatePicker
-                    id='datePicker'
-                    selected={newEventDate}
-                    onChange={(date) => {
-                      setNewEventDate(date)
-                    }}
-                    showTimeSelect
-                    dateFormat='dd/MM/yyyy'
-                  />
-                  <label className='timeDisplay' htmlFor='datePicker'>{`${
-                    newEventDate.getHours() <= 9
-                      ? '0' + newEventDate.getHours()
-                      : newEventDate.getHours()
-                  }:${
-                    newEventDate.getMinutes() <= 9
-                      ? '0' + newEventDate.getMinutes()
-                      : newEventDate.getMinutes()
-                  }`}</label>
-                  , <span className='comment'>{'/* DD/MM/YYYY */'}</span>
-                </pre>
-                <pre className='tab'>
-                  allDay<label className='codePink'>:</label>
-                  <input
-                    type='checkbox'
-                    checked={newEventAllDay}
-                    onChange={(e) => setNewEventAllDay(e.target.checked)}
-                  />
-                  ,
-                </pre>
-                <pre className='tab'>
-                  extra<label className='codePink'>:</label> {'{'}
-                </pre>
-                <pre className='tab2'>
-                  icon<label className='codePink'>:</label>"
-                  <input
-                    type='text'
-                    value={newEventIcon}
-                    onChange={(e) => setNewEventIcon(e.target.value)}
-                  ></input>
-                  ",
-                </pre>
-                <pre className='tab2'>
-                  text<label className='codePink'>:</label>"
-                  <input
-                    type='text'
-                    value={newEventText}
-                    onChange={(e) => setNewEventText(e.target.value)}
-                  ></input>
-                  "
-                </pre>
-                <pre>{'}'}</pre>
-                <div className='addEvent'>
-                  <button
-                    className='colorPickerBtn'
-                    disabled={newEventName === ''}
-                    onClick={addEvent}
-                  >
-                    addEvent()
-                  </button>
-                </div>
-              </code>
-            </div>
-            <div onClick={() => setShowAddEventModal(false)}></div>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            <Navbar />
           </div>
-        )}
-    </Fragment>
-  )
+        </div>
+
+        <div className="App">
+
+          <h1>Family Calendar</h1>
+          <div>
+            <Fragment>
+                <div className='demo'>
+                  <RevoCalendar
+                    events={eventList}
+                    style={{
+                      borderRadius: '5px',
+                      border: '5px solid var(--primaryColor)'
+                    }}
+                    date={new Date()}
+                    deleteEvent={deleteEvent}
+                    highlightToday={highlightToday}
+                    lang={lang}
+                    primaryColor={primaryColor}
+                    secondaryColor={secondaryColor}
+                    todayColor={todayColor}
+                    textColor={textColor}
+                    indicatorColor={indicatorColor}
+                    animationSpeed={animationSpeed}
+                    sidebarWidth={sidebarWidth}
+                    detailWidth={detailWidth}
+                    showDetailToggler={showDetailToggler}
+                    showSidebarToggler={showSidebarToggler}
+                    onePanelAtATime={onePanelAtATime}
+                    allowDeleteEvent={allowDeleteEvent}
+                    allowAddEvent={allowAddEvent}
+                    openDetailsOnDateSelection={openDetailsOnDateSelection}
+                    timeFormat24={timeFormat24}
+                    showAllDayLabel={showAllDayLabel}
+                    detailDateFormat={detailDateFormat}
+                    addEvent={(date) => {
+                      setNewEventDate(date)
+                      setShowAddEventModal(true)
+                    }}
+                  />
+                </div>
+                {showAddEventModal && (
+                  <div className='addEventModal'>
+                    <h2>Add your own event: </h2>
+                    <div className='options'>
+                      <code>
+                        <pre>
+                          <span className='codePink'>var </span>newEvent = {'{'}
+                        </pre>
+                        <pre className='tab'>
+                          name<label className='codePink'>:</label> "
+                          <input
+                            type='text'
+                            value={newEventName}
+                            onChange={(e) => setNewEventName(e.target.value)}
+                          ></input>
+                          ",
+                        </pre>
+                        <pre className='tab'>
+                          date<label className='codePink'>:</label>
+                          <DatePicker
+                            id='datePicker'
+                            selected={newEventDate}
+                            onChange={(date) => {
+                              setNewEventDate(date)
+                            }}
+                            showTimeSelect
+                            dateFormat='dd/MM/yyyy'
+                          />
+                          <label className='timeDisplay' htmlFor='datePicker'>{`${
+                            newEventDate.getHours() <= 9
+                              ? '0' + newEventDate.getHours()
+                              : newEventDate.getHours()
+                          }:${
+                            newEventDate.getMinutes() <= 9
+                              ? '0' + newEventDate.getMinutes()
+                              : newEventDate.getMinutes()
+                          }`}</label>
+                          , <span className='comment'>{'/* DD/MM/YYYY */'}</span>
+                        </pre>
+                        <pre className='tab'>
+                          allDay<label className='codePink'>:</label>
+                          <input
+                            type='checkbox'
+                            checked={newEventAllDay}
+                            onChange={(e) => setNewEventAllDay(e.target.checked)}
+                          />
+                          ,
+                        </pre>
+                        <pre className='tab'>
+                          extra<label className='codePink'>:</label> {'{'}
+                        </pre>
+                        <pre className='tab2'>
+                          icon<label className='codePink'>:</label>"
+                          <input
+                            type='text'
+                            value={newEventIcon}
+                            onChange={(e) => setNewEventIcon(e.target.value)}
+                          ></input>
+                          ",
+                        </pre>
+                        <pre className='tab2'>
+                          text<label className='codePink'>:</label>"
+                          <input
+                            type='text'
+                            value={newEventText}
+                            onChange={(e) => setNewEventText(e.target.value)}
+                          ></input>
+                          "
+                        </pre>
+                        <pre>{'}'}</pre>
+                        <div className='addEvent'>
+                          <button
+                            className='colorPickerBtn'
+                            disabled={newEventName === ''}
+                            onClick={addEvent}
+                          >
+                            addEvent()
+                          </button>
+                        </div>
+                      </code>
+                    </div>
+                    <div onClick={() => setShowAddEventModal(false)}></div>
+                  </div>
+                )}
+            </Fragment>
+          </div>
+
+          <h1>Grocery List</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              className="input"
+              type="text"
+              value={item}
+              placeholder="Enter the items"
+              onChange={handleChange}
+            />
+            <Button>Add Item</Button>
+            <br></br>
+            <br></br>
+          </form>
+          <div>
+            {list.map((c, id) => (
+              <Item
+                key={id}
+                id={c.id}
+                item={c.item}
+                list={list}
+                setList={setList}
+                complete={c.complete}
+                setItem={setItem}
+              />
+            ))}
+          </div>
+          <Footer></Footer>
+        </div >
+      </Router>
+    </ApolloProvider>
+  );
 }
 
 export default App
