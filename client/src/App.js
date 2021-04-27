@@ -6,8 +6,8 @@ import Login from "./Pages/Login";
 import Footer from './components/Footer';
 import { v4 as uuidv4 } from "uuid";
 // import Calendar from './components/Calendar';
-import Nav from './components/Nav';
-import Signup from "./Pages/Signup";
+// import Nav from './components/Nav';
+// import Signup from "./Pages/Signup";
 
 
 import './App.css';
@@ -26,16 +26,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-// function App() {
-//   return (
-//     <div>
-//       {/* <Nav></Nav> */}
-//       <main>
-//         <Login></Login>
-//       </main>
-//     </div>
-// //   );
-// }
 
 
 
@@ -96,7 +86,7 @@ function App() {
         ))}
       </div>
       <Login></Login>
-      <Signup></Signup>
+      {/* <Signup></Signup> */}
       <Footer></Footer>
     </div >
   );
