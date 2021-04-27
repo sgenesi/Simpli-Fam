@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./App.css";
 import Item from "./components/Grocery";
 import Calendar from 'react-calendar';
 import styled from 'styled-components';
 import Header from './components/Header';
-import Navbar from './components/Nav';
 import Footer from './components/Footer';
 import { v4 as uuidv4 } from "uuid";
 
@@ -77,7 +77,7 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            <Navbar />
+
           </div>
         </div>
 
