@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import "./App.css";
-import Item from "./components/Item";
-import Calendar from 'react-calendar';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 
+import "./App.css";
+import Item from "./components/Grocery";
+import Calendar from 'react-calendar';
+import styled from 'styled-components';
+import Header from './components/Header';
 import Footer from './components/Footer';
 import { v4 as uuidv4 } from "uuid";
 
+import Login from './Pages/Login';
 import './App.css';
 
 const arr = () => {
@@ -16,8 +21,16 @@ const arr = () => {
 };
 
 const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
-  cache: new InMemoryCache()
+  request: operation => {
+    const token = localStorage.getItem('id_token');
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    });
+  },
+  uri: '/graphql'
 });
 
 
@@ -48,46 +61,70 @@ function App() {
     setItem(e.target.value);
   };
 
+  const Button = styled.button`
+  color: #023047;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid #023047;
+  border-radius: 3px;
+`;
+
   return (
-    <div className="App">
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            <Switch>
 
-      <div>
-        <Calendar
-          onChange={onChange}
-          value={value}
-        />
-      </div>
+              <Route exact path="/item" component={Item} />
 
-      <h1>Grocery List</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="input"
-          type="text"
-          value={item}
-          placeholder="Enter the items"
-          onChange={handleChange}
-        />
-        <button className="btn" type="submit">
-          Add Items
-        </button>
-        <br></br>
-        <br></br>
-      </form>
-      <div>
-        {list.map((c, id) => (
-          <Item
-            key={id}
-            id={c.id}
-            item={c.item}
-            list={list}
-            setList={setList}
-            complete={c.complete}
-            setItem={setItem}
-          />
-        ))}
-      </div>
-      <Footer></Footer>
-    </div >
+
+            </Switch>
+          </div>
+        </div>
+
+        <div className="App">
+
+          <h1>Family Calendar</h1>
+          <div>
+            <Calendar
+              onChange={onChange}
+              value={value}
+            />
+          </div>
+
+          <h1>Grocery List</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              className="input"
+              type="text"
+              value={item}
+              placeholder="Enter the items"
+              onChange={handleChange}
+            />
+            <Button>Add Item</Button>
+            <br></br>
+            <br></br>
+          </form>
+          <div>
+            {list.map((c, id) => (
+              <Item
+                key={id}
+                id={c.id}
+                item={c.item}
+                list={list}
+                setList={setList}
+                complete={c.complete}
+                setItem={setItem}
+              />
+            ))}
+          </div>
+          <Footer></Footer>
+        </div >
+      </Router>
+    </ApolloProvider>
   );
 }
 
