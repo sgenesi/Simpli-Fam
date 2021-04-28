@@ -23,7 +23,7 @@ const Home = () => {
                         <div>Loading...</div>
                     ) : ( */}
                     {/* <FamilyCalendar /> */}
-                    )
+                    {/* ) */}
                 </div>
 
             </div>
