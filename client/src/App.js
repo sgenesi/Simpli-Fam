@@ -163,21 +163,6 @@ function App() {
   const [displayColorPicker, setDisplayColorPicker] = useState(0)
   const [showAddEventModal, setShowAddEventModal] = useState(false)
 
-  const [highlightToday, setHighlightToday] = useState(true)
-  const [lang, setLang] = useState('en')
-  const [primaryColor, setPrimaryColor] = useState('#4F6995')
-  const [secondaryColor, setSecondaryColor] = useState('#D7E6EE')
-  const [todayColor, setTodayColor] = useState('#3B3966')
-  const [textColor, setTextColor] = useState('#333333')
-  const [indicatorColor, setIndicatorColor] = useState('orange')
-  const [animationSpeed, setAnimationSpeed] = useState(300)
-  const [sidebarWidth, setSidebarWidth] = useState(180)
-  const [detailWidth, setDetailWidth] = useState(280)
-  const [showDetailToggler, setShowDetailToggler] = useState(true)
-  const [showSidebarToggler, setShowSidebarToggler] = useState(true)
-  const [onePanelAtATime, setOnePanelAtATime] = useState(false)
-  const [allowDeleteEvent, setAllowDeleteEvent] = useState(true)
-  const [allowAddEvent, setAllowAddEvent] = useState(true)
   const [openDetailsOnDateSelection, setOpenDetailsOnDateSelection] = useState(
     true
   )
@@ -288,25 +273,75 @@ function App() {
                     }}
                     date={new Date()}
                     deleteEvent={deleteEvent}
-                    highlightToday={highlightToday}
-                    lang={lang}
-                    primaryColor={primaryColor}
-                    secondaryColor={secondaryColor}
-                    todayColor={todayColor}
-                    textColor={textColor}
-                    indicatorColor={indicatorColor}
-                    animationSpeed={animationSpeed}
-                    sidebarWidth={sidebarWidth}
-                    detailWidth={detailWidth}
-                    showDetailToggler={showDetailToggler}
-                    showSidebarToggler={showSidebarToggler}
-                    onePanelAtATime={onePanelAtATime}
-                    allowDeleteEvent={allowDeleteEvent}
-                    allowAddEvent={allowAddEvent}
-                    openDetailsOnDateSelection={openDetailsOnDateSelection}
-                    timeFormat24={timeFormat24}
-                    showAllDayLabel={showAllDayLabel}
-                    detailDateFormat={detailDateFormat}
+                    highlightToday
+                    ={
+                    true
+                    }
+                    lang
+                    =
+                    "en"
+                    primaryColor
+                    =
+                    "#023047"
+                    secondaryColor
+                    =
+                    "#ffffff"
+                    todayColor
+                    =
+                    "#3B3966"
+                    textColor
+                    =
+                    "#fb8500"
+                    indicatorColor
+                    =
+                    "#8ecae6"
+                    animationSpeed
+                    ={
+                    300
+                    }
+                    sidebarWidth
+                    ={
+                    180
+                    }
+                    detailWidth
+                    ={
+                    280
+                    }
+                    showDetailToggler
+                    ={
+                    true
+                    }
+                    showSidebarToggler
+                    ={
+                    true
+                    }
+                    onePanelAtATime
+                    ={
+                    false
+                    }
+                    allowDeleteEvent
+                    ={
+                    true
+                    }
+                    allowAddEvent
+                    ={
+                    true
+                    }
+                    openDetailsOnDateSelection
+                    ={
+                    true
+                    }
+                    timeFormat24
+                    ={
+                    true
+                    }
+                    showAllDayLabel
+                    ={
+                    false
+                    }
+                    detailDateFormat
+                    =
+                    "MM/DD/YYYY"
                     addEvent={(date) => {
                       setNewEventDate(date)
                       setShowAddEventModal(true)
