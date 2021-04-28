@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+// import ApolloClient from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import FamilyCalendar from './components/Calendar';
@@ -9,6 +9,8 @@ import { ChromePicker } from 'react-color'
 import GitHubButton from 'react-github-btn'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import Item from "./components/Item";
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import "./App.css";
 import Item from "./components/Grocery";
@@ -20,6 +22,8 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import GroceryList from './pages/GroceryList';
+import './components/chat/ChatApp.css';
+import ChatApp from "./components/chat/ChatApp";
 
 
 const client = new ApolloClient({
