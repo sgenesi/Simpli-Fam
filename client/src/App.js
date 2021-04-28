@@ -19,6 +19,13 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Login from "./Pages/Login";
+import Footer from './components/Footer';
+import { v4 as uuidv4 } from "uuid";
+// import Calendar from './components/Calendar';
+// import Nav from './components/Nav';
+// import Signup from "./Pages/Signup";
+
 
 import Home from './pages/Home';
 import GroceryList from './pages/GroceryList';
