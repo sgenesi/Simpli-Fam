@@ -144,21 +144,6 @@ function App() {
   const [displayColorPicker, setDisplayColorPicker] = useState(0)
   const [showAddEventModal, setShowAddEventModal] = useState(false)
 
-  const [highlightToday, setHighlightToday] = useState(true)
-  const [lang, setLang] = useState('en')
-  const [primaryColor, setPrimaryColor] = useState('#4F6995')
-  const [secondaryColor, setSecondaryColor] = useState('#D7E6EE')
-  const [todayColor, setTodayColor] = useState('#3B3966')
-  const [textColor, setTextColor] = useState('#333333')
-  const [indicatorColor, setIndicatorColor] = useState('orange')
-  const [animationSpeed, setAnimationSpeed] = useState(300)
-  const [sidebarWidth, setSidebarWidth] = useState(180)
-  const [detailWidth, setDetailWidth] = useState(280)
-  const [showDetailToggler, setShowDetailToggler] = useState(true)
-  const [showSidebarToggler, setShowSidebarToggler] = useState(true)
-  const [onePanelAtATime, setOnePanelAtATime] = useState(false)
-  const [allowDeleteEvent, setAllowDeleteEvent] = useState(true)
-  const [allowAddEvent, setAllowAddEvent] = useState(true)
   const [openDetailsOnDateSelection, setOpenDetailsOnDateSelection] = useState(
     true
   )
@@ -179,7 +164,7 @@ function App() {
   }
 
   function addEvent() {
-    setShowAddEventModal(false)
+    setShowAddEventModal(true)
     var newEvent = {
       name: newEventName,
       date: newEventDate,
@@ -251,11 +236,10 @@ function App() {
         <div className="App">
 
           <div>
-
             <h1 class="App">Family Calendar</h1>
             <div>
               <Fragment>
-                <div className='demo calendar-margin'>
+                <div className='calendar-margin'>
                   <RevoCalendar
                     events={eventList}
                     style={{
@@ -264,25 +248,25 @@ function App() {
                     }}
                     date={new Date()}
                     deleteEvent={deleteEvent}
-                    highlightToday={highlightToday}
-                    lang={lang}
-                    primaryColor={primaryColor}
-                    secondaryColor={secondaryColor}
-                    todayColor={todayColor}
-                    textColor={textColor}
-                    indicatorColor={indicatorColor}
-                    animationSpeed={animationSpeed}
-                    sidebarWidth={sidebarWidth}
-                    detailWidth={detailWidth}
-                    showDetailToggler={showDetailToggler}
-                    showSidebarToggler={showSidebarToggler}
-                    onePanelAtATime={onePanelAtATime}
-                    allowDeleteEvent={allowDeleteEvent}
-                    allowAddEvent={allowAddEvent}
-                    openDetailsOnDateSelection={openDetailsOnDateSelection}
-                    timeFormat24={timeFormat24}
-                    showAllDayLabel={showAllDayLabel}
-                    detailDateFormat={detailDateFormat}
+                    highlightToday={true}
+                    lang="en"
+                    primaryColor="#023047"
+                    secondaryColor="#ffffff"
+                    todayColor="#3B3966"
+                    textColor="#fb8500"
+                    indicatorColor="#8ecae6"
+                    animationSpeed={300}
+                    sidebarWidth={180}
+                    detailWidth={280}
+                    showDetailToggler={true}
+                    showSidebarToggler={true}
+                    onePanelAtATime={false}
+                    allowDeleteEvent={true}
+                    allowAddEvent={true}
+                    openDetailsOnDateSelection={true}
+                    timeFormat24={true}
+                    showAllDayLabel={false}
+                    detailDateFormat="MM/DD/YYYY"
                     addEvent={(date) => {
                       setNewEventDate(date)
                       setShowAddEventModal(true)
@@ -295,19 +279,19 @@ function App() {
                     <div className='options'>
                       <code>
                         <pre>
-                          <span className='codePink'>var </span>newEvent = {'{'}
+                          <span className='codePink'></span>{}
                         </pre>
                         <pre className='tab'>
-                          name<label className='codePink'>:</label> "
+                          Event Name<label className='codePink'>:</label>
                           <input
                             type='text'
                             value={newEventName}
                             onChange={(e) => setNewEventName(e.target.value)}
                           ></input>
-                          ",
+                          
                         </pre>
                         <pre className='tab'>
-                          date<label className='codePink'>:</label>
+                          Date<label className='codePink'>:</label>
                           <DatePicker
                             id='datePicker'
                             selected={newEventDate}
@@ -315,7 +299,7 @@ function App() {
                               setNewEventDate(date)
                             }}
                             showTimeSelect
-                            dateFormat='dd/MM/yyyy'
+                            dateFormat='mm/dd/yyyy'
                           />
                           <label className='timeDisplay' htmlFor='datePicker'>{`${newEventDate.getHours() <= 9
                             ? '0' + newEventDate.getHours()
@@ -327,43 +311,29 @@ function App() {
                           , <span className='comment'>{'/* DD/MM/YYYY */'}</span>
                         </pre>
                         <pre className='tab'>
-                          allDay<label className='codePink'>:</label>
+                          All Day Event<label className='codePink'>:</label>
                           <input
                             type='checkbox'
                             checked={newEventAllDay}
                             onChange={(e) => setNewEventAllDay(e.target.checked)}
                           />
-                          ,
-                        </pre>
-                        <pre className='tab'>
-                          extra<label className='codePink'>:</label> {'{'}
                         </pre>
                         <pre className='tab2'>
-                          icon<label className='codePink'>:</label>"
-                          <input
-                            type='text'
-                            value={newEventIcon}
-                            onChange={(e) => setNewEventIcon(e.target.value)}
-                          ></input>
-                          ",
-                        </pre>
-                        <pre className='tab2'>
-                          text<label className='codePink'>:</label>"
+                          Details<label className='codePink'>:</label>
                           <input
                             type='text'
                             value={newEventText}
                             onChange={(e) => setNewEventText(e.target.value)}
                           ></input>
-                          "
                         </pre>
-                        <pre>{'}'}</pre>
+                        <pre>{}</pre>
                         <div className='addEvent'>
                           <button
                             className='colorPickerBtn'
                             disabled={newEventName === ''}
                             onClick={addEvent}
                           >
-                            addEvent()
+                            Submit
                           </button>
                         </div>
                       </code>
