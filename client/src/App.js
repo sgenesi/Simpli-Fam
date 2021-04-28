@@ -22,8 +22,8 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import GroceryList from './pages/GroceryList';
-import './components/chat/ChatApp.css';
-import ChatApp from "./components/chat/ChatApp";
+import './components/Chat/ChatApp.css';
+import ChatApp from "./components/Chat/ChatApp";
 
 
 const client = new ApolloClient({
