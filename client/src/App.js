@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
-// import ApolloClient from 'apollo-boost';
+import ApolloClient from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import FamilyCalendar from './components/Calendar';
@@ -9,8 +9,7 @@ import { ChromePicker } from 'react-color'
 import GitHubButton from 'react-github-btn'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import Item from "./components/Item";
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+// import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import "./App.css";
 import Item from "./components/Grocery";
@@ -19,9 +18,8 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from "./Pages/Login";
-import Footer from './components/Footer';
-import { v4 as uuidv4 } from "uuid";
+import Login from "./pages/Login";
+
 // import Calendar from './components/Calendar';
 // import Nav from './components/Nav';
 // import Signup from "./Pages/Signup";
@@ -29,7 +27,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import Home from './pages/Home';
 import GroceryList from './pages/GroceryList';
-import './components/Chat/ChatApp.css';
+// import './components/Chat/ChatApp.css';
 import ChatApp from "./components/Chat/ChatApp";
 
 
