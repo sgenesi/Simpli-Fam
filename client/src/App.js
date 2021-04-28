@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import "./App.css";
 import Item from "./components/Item";
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import Login from './Pages/Login'
 
 import Footer from './components/Footer';
 import { v4 as uuidv4 } from "uuid";
@@ -79,6 +80,7 @@ function App() {
     //   <Footer></Footer>
     // </div >
     <ChatApp />
+    // <Login />
   );
 }
 
