@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useState, Fragment, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import "./App.css";
-import FamilyCalendar from './components/Calendar';
-import React, { Fragment, useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+// import FamilyCalendar from './components/Calendar';
 import { ChromePicker } from 'react-color'
 import GitHubButton from 'react-github-btn'
 import DatePicker from 'react-datepicker'
@@ -25,7 +20,7 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import GroceryList from './pages/GroceryList';
-import Login from './pages/Login';
+
 
 const client = new ApolloClient({
   request: operation => {
@@ -41,30 +36,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [item, setItem] = useState("");
-  const [list, setList] = useState(arr);
-  const [value, onChange] = useState(new Date());
-
-  const handleSubmit = (e) => {
-    const newItem = {
-      id: uuidv4(),
-      item: item,
-      complete: false,
-    };
-    e.preventDefault();
-    if (item && item.length <= 25) {
-      setList([...list, newItem]);
-      setItem("");
-    }
-  };
-
-  React.useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(list));
-  }, [list]);
-
-  const handleChange = (e) => {
-    setItem(e.target.value);
-  };
 
   var reso1 = new Date()
   reso1.setHours(17, 0, 0)
@@ -256,15 +227,6 @@ function App() {
     console.log('%cEventList: ', 'color: #b788f4', eventList)
   }, [eventList])
 
-  const Button = styled.button`
-  color: #023047;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid #023047;
-  border-radius: 3px;
-`;
-
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -347,8 +309,8 @@ function App() {
                             dateFormat='dd/MM/yyyy'
                           />
                           <label className='timeDisplay' htmlFor='datePicker'>{`${newEventDate.getHours() <= 9
-                              ? '0' + newEventDate.getHours()
-                              : newEventDate.getHours()
+                            ? '0' + newEventDate.getHours()
+                            : newEventDate.getHours()
                             }:${newEventDate.getMinutes() <= 9
                               ? '0' + newEventDate.getMinutes()
                               : newEventDate.getMinutes()
@@ -404,22 +366,10 @@ function App() {
             </div>
 
             <div className="App">
-              <h1>Grocery List</h1>
-              <form onSubmit={handleSubmit}>
-                <input
-                  className="input"
-                  type="text"
-                  value={item}
-                  placeholder="Enter the items"
-                  onChange={handleChange}
-                />
-                <Button>Add Item</Button>
-                <br></br>
-                <br></br>
-              </form>
-              <div>
+
+              {/* <div>
                 <FamilyCalendar />
-              </div>
+              </div> */}
               <Footer />
             </div >
           </div>
