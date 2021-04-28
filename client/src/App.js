@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import Item from "./components/Item";
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import Footer from './components/Footer';
 import { v4 as uuidv4 } from "uuid";
 
-import './App.css';
+import './components/chat/ChatApp.css';
+import ChatApp from "./components/chat/ChatApp";
 
 const arr = () => {
   let data = localStorage.getItem("data");
@@ -45,38 +46,39 @@ function App() {
   };
 
   return (
-    <div className="App">
+    // <div className="App">
 
-      <h1>Grocery List</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="input"
-          type="text"
-          value={item}
-          placeholder="Enter the items"
-          onChange={handleChange}
-        />
-        <button className="btn" type="submit">
-          Add Items
-        </button>
-        <br></br>
-        <br></br>
-      </form>
-      <div>
-        {list.map((c, id) => (
-          <Item
-            key={id}
-            id={c.id}
-            item={c.item}
-            list={list}
-            setList={setList}
-            complete={c.complete}
-            setItem={setItem}
-          />
-        ))}
-      </div>
-      <Footer></Footer>
-    </div >
+    //   <h1>Grocery List</h1>
+    //   <form onSubmit={handleSubmit}>
+    //     <input
+    //       className="input"
+    //       type="text"
+    //       value={item}
+    //       placeholder="Enter the items"
+    //       onChange={handleChange}
+    //     />
+    //     <button className="btn" type="submit">
+    //       Add Items
+    //     </button>
+    //     <br></br>
+    //     <br></br>
+    //   </form>
+    //   <div>
+    //     {list.map((c, id) => (
+    //       <Item
+    //         key={id}
+    //         id={c.id}
+    //         item={c.item}
+    //         list={list}
+    //         setList={setList}
+    //         complete={c.complete}
+    //         setItem={setItem}
+    //       />
+    //     ))}
+    //   </div>
+    //   <Footer></Footer>
+    // </div >
+    <ChatApp />
   );
 }
 
