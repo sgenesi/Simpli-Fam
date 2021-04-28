@@ -19,8 +19,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
       minlength: 5
+    }
   },
-    toJSON: {
+   { 
+     toJSON: {
       virtuals: true
     }
   }
