@@ -17,7 +17,7 @@ const Header = () => {
 
     return (
         <Navbar bg="warning" expand="lg" sticky="top">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/home">
                 <img
                     src={Logo}
                     width="200"
@@ -35,8 +35,8 @@ const Header = () => {
                         <Dropdown.Toggle split variant="info" id="dropdown-split-basic" />
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="#/GroceryList">Grocery List</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Family Notes</Dropdown.Item>
+                            <Dropdown.Item href="/GroceryList">Grocery List</Dropdown.Item>
+                            <Dropdown.Item href="/action-2">Family Notes</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Nav>

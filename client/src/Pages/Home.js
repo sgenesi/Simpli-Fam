@@ -6,8 +6,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
 
 const Home = () => {
-    const { loading, data } = useQuery(QUERY_THOUGHTS);
-    const { data: userData } = useQuery(QUERY_ME_BASIC);
+    // const { loading, data } = useQuery(QUERY_THOUGHTS);
+    // const { data: userData } = useQuery(QUERY_ME_BASIC);
     const loggedIn = Auth.loggedIn();
 
     return (
@@ -22,7 +22,7 @@ const Home = () => {
                     {/* {loading ? (
                         <div>Loading...</div>
                     ) : ( */}
-                    <FamilyCalendar />
+                    {/* <FamilyCalendar /> */}
                     )
                 </div>
 
