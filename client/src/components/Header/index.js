@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from "../../assets/images/Logo.png";
 import Auth from '../../utils/auth';
+import Navbar from 'react-bootstrap/Navbar'
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav';
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 const Header = () => {
     const logout = event => {
@@ -10,30 +16,32 @@ const Header = () => {
     };
 
     return (
-        <header className="mb-4 py-2 flex-row align-center">
-            <div className="container flex-row justify-space-between-lg justify-center align-center">
+        <Navbar bg="warning" expand="lg" sticky="top">
+            <Navbar.Brand href="/home">
+                <img
+                    src={Logo}
+                    width="200"
+                    height="140"
+                    className="d-inline-block align-top"
+                    alt="SimpliFam logo"
+                />
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    <Dropdown as={ButtonGroup}>
+                        <Button variant="info">Pages</Button>
 
-                <img src={Logo} className="my-1" style={{ width: "15%" }} alt="logo" />
+                        <Dropdown.Toggle split variant="info" id="dropdown-split-basic" />
 
-
-                <nav className="text-center">
-                    {Auth.loggedIn() ? (
-                        <>
-                            <Link to="/calendar">Calendar</Link>
-                            <Link to="/item">"Grocery List</Link>
-                            <a href="/" onClick={logout}>
-                                Logout
-                            </a>
-                        </>
-                    ) : (
-                        <>
-                            <Link to="/login">Login</Link>
-                            <Link to="/signup">Signup</Link>
-                        </>
-                    )}
-                </nav>
-            </div>
-        </header>
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="/GroceryList">Grocery List</Dropdown.Item>
+                            <Dropdown.Item href="/action-2">Family Notes</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar >
     );
 };
 

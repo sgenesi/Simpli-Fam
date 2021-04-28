@@ -1,11 +1,15 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { useState, Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// import FamilyCalendar from './components/Calendar';
 import { ChromePicker } from 'react-color'
 import GitHubButton from 'react-github-btn'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+// import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import "./App.css";
 import Item from "./components/Grocery";
@@ -13,18 +17,19 @@ import RevoCalendar from 'revo-calendar'
 import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
-import Navbar from './components/Nav';
 import Footer from './components/Footer';
-import { v4 as uuidv4 } from "uuid";
+import Login from "./Pages/Login";
 
-import Login from './Pages/Login';
-import './App.css';
+// import Calendar from './components/Calendar';
+// import Nav from './components/Nav';
+// import Signup from "./Pages/Signup";
 
-const arr = () => {
-  let data = localStorage.getItem("data");
-  if (data) return JSON.parse(localStorage.getItem("data"));
-  else return [];
-};
+
+import Home from './Pages/Home';
+import GroceryList from './Pages/GroceryList';
+// import './components/Chat/ChatApp.css';
+import ChatApp from "./components/Chat/ChatApp";
+
 
 const client = new ApolloClient({
   request: operation => {
@@ -40,30 +45,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [item, setItem] = useState("");
-  const [list, setList] = useState(arr);
-  const [value, onChange] = useState(new Date());
-
-  const handleSubmit = (e) => {
-    const newItem = {
-      id: uuidv4(),
-      item: item,
-      complete: false,
-    };
-    e.preventDefault();
-    if (item && item.length <= 25) {
-      setList([...list, newItem]);
-      setItem("");
-    }
-  };
-
-  React.useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(list));
-  }, [list]);
-
-  const handleChange = (e) => {
-    setItem(e.target.value);
-  };
 
   var reso1 = new Date()
   reso1.setHours(17, 0, 0)
@@ -240,30 +221,24 @@ function App() {
     console.log('%cEventList: ', 'color: #b788f4', eventList)
   }, [eventList])
 
-  const Button = styled.button`
-  color: #023047;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid #023047;
-  border-radius: 3px;
-`;
-
   return (
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/GroceryList" component={GroceryList} />
+            </Switch>
           </div>
         </div>
+        <div className="App">
 
-        <div>
-
-          <h1 class="App">Family Calendar</h1>
           <div>
-            <Fragment>
+            <h1 class="App">Family Calendar</h1>
+            <div>
+              <Fragment>
                 <div className='calendar-margin'>
                   <RevoCalendar
                     events={eventList}
@@ -326,15 +301,13 @@ function App() {
                             showTimeSelect
                             dateFormat='mm/dd/yyyy'
                           />
-                          <label className='timeDisplay' htmlFor='datePicker'>{`${
-                            newEventDate.getHours() <= 9
-                              ? '0' + newEventDate.getHours()
-                              : newEventDate.getHours()
-                          }:${
-                            newEventDate.getMinutes() <= 9
+                          <label className='timeDisplay' htmlFor='datePicker'>{`${newEventDate.getHours() <= 9
+                            ? '0' + newEventDate.getHours()
+                            : newEventDate.getHours()
+                            }:${newEventDate.getMinutes() <= 9
                               ? '0' + newEventDate.getMinutes()
                               : newEventDate.getMinutes()
-                          }`}</label>
+                            }`}</label>
                           , <span className='comment'>{'/* DD/MM/YYYY */'}</span>
                         </pre>
                         <pre className='tab'>
@@ -368,38 +341,17 @@ function App() {
                     <div onClick={() => setShowAddEventModal(false)}></div>
                   </div>
                 )}
-            </Fragment>
-          </div>
+              </Fragment>
+            </div>
 
-          <div className="App">
-          <h1>Grocery List</h1>
-          <form onSubmit={handleSubmit}>
-            <input
-              className="input"
-              type="text"
-              value={item}
-              placeholder="Enter the items"
-              onChange={handleChange}
-            />
-            <Button>Add Item</Button>
-            <br></br>
-            <br></br>
-          </form>
-          <div>
-            {list.map((c, id) => (
-              <Item
-                key={id}
-                id={c.id}
-                item={c.item}
-                list={list}
-                setList={setList}
-                complete={c.complete}
-                setItem={setItem}
-              />
-            ))}
+            <div className="App">
+
+              {/* <div>
+                <FamilyCalendar />
+              </div> */}
+              <Footer />
+            </div >
           </div>
-          <Footer></Footer>
-        </div >
         </div>
       </Router>
     </ApolloProvider>
