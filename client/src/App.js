@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import Item from "./components/Item";
 import Calendar from 'react-calendar';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
@@ -11,7 +11,8 @@ import { v4 as uuidv4 } from "uuid";
 // import Signup from "./Pages/Signup";
 
 
-import './App.css';
+import './components/chat/ChatApp.css';
+import ChatApp from "./components/chat/ChatApp";
 
 
 
@@ -56,47 +57,39 @@ function App() {
   };
 
   return (
-    <div className="App">
+    // <div className="App">
 
-      <div>
-        <Calendar
-          onChange={onChange}
-          value={value}
-        />
-      </div>
-
-      <h1>Grocery List</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="input"
-          type="text"
-          value={item}
-          placeholder="Enter the items"
-          onChange={handleChange}
-        />
-        <button className="btn" type="submit">
-          Add Items
-        </button>
-        <br></br>
-        <br></br>
-      </form>
-      <div>
-        {list.map((c, id) => (
-          <Item
-            key={id}
-            id={c.id}
-            item={c.item}
-            list={list}
-            setList={setList}
-            complete={c.complete}
-            setItem={setItem}
-          />
-        ))}
-      </div>
-      <Login></Login>
-      {/* <Signup></Signup> */}
-      <Footer></Footer>
-    </div >
+    //   <h1>Grocery List</h1>
+    //   <form onSubmit={handleSubmit}>
+    //     <input
+    //       className="input"
+    //       type="text"
+    //       value={item}
+    //       placeholder="Enter the items"
+    //       onChange={handleChange}
+    //     />
+    //     <button className="btn" type="submit">
+    //       Add Items
+    //     </button>
+    //     <br></br>
+    //     <br></br>
+    //   </form>
+    //   <div>
+    //     {list.map((c, id) => (
+    //       <Item
+    //         key={id}
+    //         id={c.id}
+    //         item={c.item}
+    //         list={list}
+    //         setList={setList}
+    //         complete={c.complete}
+    //         setItem={setItem}
+    //       />
+    //     ))}
+    //   </div>
+    //   <Footer></Footer>
+    // </div >
+    <ChatApp />
   );
 }
 
