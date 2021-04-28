@@ -183,7 +183,7 @@ function App() {
   }
 
   function addEvent() {
-    setShowAddEventModal(false)
+    setShowAddEventModal(true)
     var newEvent = {
       name: newEventName,
       date: newEventDate,
