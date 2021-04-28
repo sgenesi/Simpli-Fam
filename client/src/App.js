@@ -18,15 +18,15 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from "./pages/Login";
+import Login from "./Pages/Login";
 
 // import Calendar from './components/Calendar';
 // import Nav from './components/Nav';
 // import Signup from "./Pages/Signup";
 
 
-import Home from './pages/Home';
-import GroceryList from './pages/GroceryList';
+import Home from './Pages/Home';
+import GroceryList from './Pages/GroceryList';
 // import './components/Chat/ChatApp.css';
 import ChatApp from "./components/Chat/ChatApp";
 
