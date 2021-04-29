@@ -18,15 +18,15 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from "./Pages/Login";
+import Login from "./pages/Login";
 
 // import Calendar from './components/Calendar';
 // import Nav from './components/Nav';
 // import Signup from "./Pages/Signup";
 
 
-import Home from './Pages/Home';
-import GroceryList from './Pages/GroceryList';
+import Home from './pages/Home';
+import GroceryList from './pages/GroceryList';
 // import './components/Chat/ChatApp.css';
 import ChatApp from "./components/Chat/ChatApp";
 
@@ -254,7 +254,7 @@ function App() {
                     <div className='options'>
                       <code>
                         <pre>
-                          <span className='codePink'></span>{}
+                          <span className='codePink'></span>{ }
                         </pre>
                         <pre className='tab'>
                           Event Name<label className='codePink'>:</label>
@@ -263,7 +263,7 @@ function App() {
                             value={newEventName}
                             onChange={(e) => setNewEventName(e.target.value)}
                           ></input>
-                          
+
                         </pre>
                         <pre className='tab'>
                           Date and Time<label className='codePink'>:</label>
@@ -283,7 +283,7 @@ function App() {
                               ? '0' + newEventDate.getMinutes()
                               : newEventDate.getMinutes()
                             }`}</label>
-                           <span className='comment'>{}</span>
+                          <span className='comment'>{ }</span>
                         </pre>
                         <pre className='tab'>
                           All Day Event<label className='codePink'>:</label>
@@ -301,7 +301,7 @@ function App() {
                             onChange={(e) => setNewEventText(e.target.value)}
                           ></input>
                         </pre>
-                        <pre>{}</pre>
+                        <pre>{ }</pre>
                         <div className='addEvent'>
                           <button
                             className='colorPickerBtn'
