@@ -257,7 +257,7 @@ function App() {
                           <span className='codePink'></span>{}
                         </pre>
                         <pre className='tab'>
-                          Event Name<label className='codePink'>:</label>
+                          Event Name:
                           <input
                             type='text'
                             value={newEventName}
@@ -266,7 +266,7 @@ function App() {
                           
                         </pre>
                         <pre className='tab'>
-                          Date and Time<label className='codePink'>:</label>
+                          Date and Time:
                           <DatePicker
                             id='datePicker'
                             selected={newEventDate}
@@ -274,7 +274,7 @@ function App() {
                               setNewEventDate(date)
                             }}
                             showTimeSelect
-                            dateFormat='MM/dd/yyyy'
+                            dateFormat='MM/dd/yy'
                           />
                           <label className='timeDisplay' htmlFor='datePicker'>{`${newEventDate.getHours() <= 9
                             ? '0' + newEventDate.getHours()
@@ -286,7 +286,7 @@ function App() {
                            <span className='comment'>{}</span>
                         </pre>
                         <pre className='tab'>
-                          All Day Event<label className='codePink'>:</label>
+                          All Day Event:
                           <input
                             type='checkbox'
                             checked={newEventAllDay}
@@ -294,7 +294,7 @@ function App() {
                           />
                         </pre>
                         <pre className='tab2'>
-                          Details<label className='codePink'>:</label>
+                          Details:
                           <input
                             type='text'
                             value={newEventText}
