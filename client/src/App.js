@@ -18,15 +18,15 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from "./pages/Login";
+import Login from "./Pages/Login";
 
 // import Calendar from './components/Calendar';
 // import Nav from './components/Nav';
 // import Signup from "./Pages/Signup";
 
 
-import Home from './pages/Home';
-import GroceryList from './pages/GroceryList';
+import Home from './Pages/Home';
+import GroceryList from './Pages/GroceryList';
 // import './components/Chat/ChatApp.css';
 import ChatApp from "./components/Chat/ChatApp";
 
@@ -211,113 +211,6 @@ function App() {
         <div>
 
           <div>
-            <h1 class="App">Family Calendar</h1>
-            <div>
-              <Fragment>
-                <div className='calendar-margin'>
-                  <RevoCalendar
-                    events={eventList}
-                    style={{
-                      borderRadius: '5px',
-                      border: '5px solid var(--primaryColor)'
-                    }}
-                    date={new Date()}
-                    deleteEvent={deleteEvent}
-                    highlightToday={true}
-                    lang="en"
-                    primaryColor="#023047"
-                    secondaryColor="#ffffff"
-                    todayColor="#3B3966"
-                    textColor="#fb8500"
-                    indicatorColor="#8ecae6"
-                    animationSpeed={300}
-                    sidebarWidth={180}
-                    detailWidth={280}
-                    showDetailToggler={true}
-                    showSidebarToggler={true}
-                    onePanelAtATime={false}
-                    allowDeleteEvent={true}
-                    allowAddEvent={true}
-                    openDetailsOnDateSelection={true}
-                    timeFormat24={true}
-                    showAllDayLabel={false}
-                    detailDateFormat="MM/DD/YYYY"
-                    addEvent={(date) => {
-                      setNewEventDate(date)
-                      setShowAddEventModal(true)
-                    }}
-                  />
-                </div>
-                {showAddEventModal && (
-                  <div className='addEventModal'>
-                    <h2>Add your own event: </h2>
-                    <div className='options'>
-                      <code>
-                        <pre>
-                          <span className='codePink'></span>{ }
-                        </pre>
-                        <pre className='tab'>
-                          Event Name:
-                          <input
-                            type='text'
-                            value={newEventName}
-                            onChange={(e) => setNewEventName(e.target.value)}
-                          ></input>
-
-                        </pre>
-                        <pre className='tab'>
-                          Date and Time:
-                          <DatePicker
-                            id='datePicker'
-                            selected={newEventDate}
-                            onChange={(date) => {
-                              setNewEventDate(date)
-                            }}
-                            showTimeSelect
-                            dateFormat='MM/dd/yy'
-                          />
-                          <label className='timeDisplay' htmlFor='datePicker'>{`${newEventDate.getHours() <= 9
-                            ? '0' + newEventDate.getHours()
-                            : newEventDate.getHours()
-                            }:${newEventDate.getMinutes() <= 9
-                              ? '0' + newEventDate.getMinutes()
-                              : newEventDate.getMinutes()
-                            }`}</label>
-                          <span className='comment'>{ }</span>
-                        </pre>
-                        <pre className='tab'>
-                          All Day Event:
-                          <input
-                            type='checkbox'
-                            checked={newEventAllDay}
-                            onChange={(e) => setNewEventAllDay(e.target.checked)}
-                          />
-                        </pre>
-                        <pre className='tab2'>
-                          Details:
-                          <input
-                            type='text'
-                            value={newEventText}
-                            onChange={(e) => setNewEventText(e.target.value)}
-                          ></input>
-                        </pre>
-                        <pre>{ }</pre>
-                        <div className='addEvent'>
-                          <button
-                            className='colorPickerBtn'
-                            disabled={newEventName === ''}
-                            onClick={addEvent}
-                          >
-                            Submit
-                          </button>
-                        </div>
-                      </code>
-                    </div>
-                    <div onClick={() => setShowAddEventModal(false)}></div>
-                  </div>
-                )}
-              </Fragment>
-            </div>
 
             <div className="App">
 
