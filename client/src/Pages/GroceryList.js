@@ -1,10 +1,10 @@
-import React from 'react';
-import Item from '../components/Grocery';
+// import React from 'react';
+// import Item from '../components/Grocery';
 
-const GroceryList = () => {
-    return (
-        <Item />
-    );
-};
+// const GroceryList = () => {
+//     return (
+//         <Item />
+//     );
+// };
 
-export default GroceryList;
+// export default GroceryList;

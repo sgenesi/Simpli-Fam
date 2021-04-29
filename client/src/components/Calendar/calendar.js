@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import RevoCalendar from 'revo-calendar'
 import 'revo-calendar/dist/index.css'
 
-function App() {
+function CalendarApp() {
 
     var reso1 = new Date()
     reso1.setHours(17, 0, 0)
@@ -266,4 +266,4 @@ function App() {
     )
   }
   
-  export default App
+  export default CalendarApp
