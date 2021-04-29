@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import FamilyCalendar from './components/Calendar';
 import { ChromePicker } from 'react-color'
-import GitHubButton from 'react-github-batn'
+import GitHubButton from 'react-github-btn'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 // import { ApolloClient, InMemoryCache } from '@apollo/client';
@@ -26,8 +26,8 @@ import Login from "./Pages/Login";
 // import Signup from "./Pages/Signup";
 
 
-import Home from './pages/Home';
-import GroceryList from './pages/GroceryList';
+import Home from './Pages/Home';
+import GroceryList from './Pages/GroceryList';
 // import './components/Chat/ChatApp.css';
 import ChatApp from "./components/Chat/ChatApp";
 
