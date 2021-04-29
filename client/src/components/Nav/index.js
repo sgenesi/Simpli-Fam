@@ -9,7 +9,7 @@ function NavTabs(props) {
           <a
             href={'#' + tab.toLowerCase()}
             onClick={() => props.handlePageChange(tab)}
-            
+
             className={
               props.currentPage === tab ? 'nav-link active' : 'nav-link'
             }

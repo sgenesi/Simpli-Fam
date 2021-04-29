@@ -26,8 +26,8 @@ import Login from "./Pages/Login";
 // import Signup from "./Pages/Signup";
 
 
-import Home from './Pages/Home';
-import GroceryList from './Pages/GroceryList';
+import Home from './pages/Home';
+import GroceryList from './pages/GroceryList';
 // import './components/Chat/ChatApp.css';
 import ChatApp from "./components/Chat/ChatApp";
 
@@ -257,19 +257,19 @@ function App() {
                     <div className='options'>
                       <code>
                         <pre>
-                          <span className='codePink'></span>{}
+                          <span className='codePink'></span>{ }
                         </pre>
                         <pre className='tab'>
-                          Event Name<label className='codePink'>:</label>
+                          Event Name:
                           <input
                             type='text'
                             value={newEventName}
                             onChange={(e) => setNewEventName(e.target.value)}
                           ></input>
-                          
+
                         </pre>
                         <pre className='tab'>
-                          Date and Time<label className='codePink'>:</label>
+                          Date and Time:
                           <DatePicker
                             id='datePicker'
                             selected={newEventDate}
@@ -277,7 +277,7 @@ function App() {
                               setNewEventDate(date)
                             }}
                             showTimeSelect
-                            dateFormat='MM/dd/yyyy'
+                            dateFormat='MM/dd/yy'
                           />
                           <label className='timeDisplay' htmlFor='datePicker'>{`${newEventDate.getHours() <= 9
                             ? '0' + newEventDate.getHours()
@@ -286,10 +286,10 @@ function App() {
                               ? '0' + newEventDate.getMinutes()
                               : newEventDate.getMinutes()
                             }`}</label>
-                           <span className='comment'>{}</span>
+                          <span className='comment'>{ }</span>
                         </pre>
                         <pre className='tab'>
-                          All Day Event<label className='codePink'>:</label>
+                          All Day Event:
                           <input
                             type='checkbox'
                             checked={newEventAllDay}
@@ -297,14 +297,14 @@ function App() {
                           />
                         </pre>
                         <pre className='tab2'>
-                          Details<label className='codePink'>:</label>
+                          Details:
                           <input
                             type='text'
                             value={newEventText}
                             onChange={(e) => setNewEventText(e.target.value)}
                           ></input>
                         </pre>
-                        <pre>{}</pre>
+                        <pre>{ }</pre>
                         <div className='addEvent'>
                           <button
                             className='colorPickerBtn'
