@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import FamilyCalendar from './components/Calendar';
 import { ChromePicker } from 'react-color'
-import GitHubButton from 'react-github-btn'
+import GitHubButton from 'react-github-batn'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 // import { ApolloClient, InMemoryCache } from '@apollo/client';
@@ -19,6 +19,7 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from "./Pages/Login";
+// import Signup from "./Pages/Signup";
 
 // import Calendar from './components/Calendar';
 // import Nav from './components/Nav';
@@ -199,6 +200,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
@@ -209,7 +211,8 @@ function App() {
           </div>
         </div>
         <div>
-
+        <Login/>
+        {/* <Signup/> */}
           <div>
             <h1 class="App">Family Calendar</h1>
             <div>
