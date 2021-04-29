@@ -4,6 +4,8 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { Link } from 'react-router-dom';
+
 // import FamilyCalendar from './components/Calendar';
 import { ChromePicker } from 'react-color'
 import GitHubButton from 'react-github-btn'
@@ -12,14 +14,18 @@ import 'react-datepicker/dist/react-datepicker.css'
 // import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import "./App.css";
-import Item from "./components/Grocery";
+// import "../src/components/Calendar/calendar.css"
+import Item from "./components/Grocery/index";
 import RevoCalendar from 'revo-calendar'
 import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from "./Pages/Login";
+import CalendarApp from "./components/Calendar/calendar";
+
 // import Signup from "./Pages/Signup";
+
 
 // import Calendar from './components/Calendar';
 // import Nav from './components/Nav';
@@ -200,140 +206,50 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/GroceryList" component={GroceryList} />
-            </Switch>
-          </div>
-        </div>
+
         <div>
-        <Login/>
-        {/* <Signup/> */}
-          <div>
-            <h1 class="App">Family Calendar</h1>
-            <div>
-              <Fragment>
-                <div className='calendar-margin'>
-                  <RevoCalendar
-                    events={eventList}
-                    style={{
-                      borderRadius: '5px',
-                      border: '5px solid var(--primaryColor)'
-                    }}
-                    date={new Date()}
-                    deleteEvent={deleteEvent}
-                    highlightToday={true}
-                    lang="en"
-                    primaryColor="#023047"
-                    secondaryColor="#ffffff"
-                    todayColor="#3B3966"
-                    textColor="#fb8500"
-                    indicatorColor="#8ecae6"
-                    animationSpeed={300}
-                    sidebarWidth={180}
-                    detailWidth={280}
-                    showDetailToggler={true}
-                    showSidebarToggler={true}
-                    onePanelAtATime={false}
-                    allowDeleteEvent={true}
-                    allowAddEvent={true}
-                    openDetailsOnDateSelection={true}
-                    timeFormat24={true}
-                    showAllDayLabel={false}
-                    detailDateFormat="MM/DD/YYYY"
-                    addEvent={(date) => {
-                      setNewEventDate(date)
-                      setShowAddEventModal(true)
-                    }}
-                  />
-                </div>
-                {showAddEventModal && (
-                  <div className='addEventModal'>
-                    <h2>Add your own event: </h2>
-                    <div className='options'>
-                      <code>
-                        <pre>
-                          <span className='codePink'></span>{ }
-                        </pre>
-                        <pre className='tab'>
-                          Event Name:
-                          <input
-                            type='text'
-                            value={newEventName}
-                            onChange={(e) => setNewEventName(e.target.value)}
-                          ></input>
+          <nav>
+            <ul>
+              {/* <li>
+                <Link to="/">Home</Link>
+              </li> */}
+              <li>
+                <Link to="/ChatApp">Family Chat</Link>
+              </li>
+              <li>
+                <Link to="/Item">Grocery List</Link>
+              </li>
+              <li>
+                <Link to="/CalendarApp">Calendar</Link>
+              </li>
+              <li>
+                <Link to="/Login">Login</Link>
+              </li>
+            </ul>
+          </nav>
 
-                        </pre>
-                        <pre className='tab'>
-                          Date and Time:
-                          <DatePicker
-                            id='datePicker'
-                            selected={newEventDate}
-                            onChange={(date) => {
-                              setNewEventDate(date)
-                            }}
-                            showTimeSelect
-                            dateFormat='MM/dd/yy'
-                          />
-                          <label className='timeDisplay' htmlFor='datePicker'>{`${newEventDate.getHours() <= 9
-                            ? '0' + newEventDate.getHours()
-                            : newEventDate.getHours()
-                            }:${newEventDate.getMinutes() <= 9
-                              ? '0' + newEventDate.getMinutes()
-                              : newEventDate.getMinutes()
-                            }`}</label>
-                          <span className='comment'>{ }</span>
-                        </pre>
-                        <pre className='tab'>
-                          All Day Event:
-                          <input
-                            type='checkbox'
-                            checked={newEventAllDay}
-                            onChange={(e) => setNewEventAllDay(e.target.checked)}
-                          />
-                        </pre>
-                        <pre className='tab2'>
-                          Details:
-                          <input
-                            type='text'
-                            value={newEventText}
-                            onChange={(e) => setNewEventText(e.target.value)}
-                          ></input>
-                        </pre>
-                        <pre>{ }</pre>
-                        <div className='addEvent'>
-                          <button
-                            className='colorPickerBtn'
-                            disabled={newEventName === ''}
-                            onClick={addEvent}
-                          >
-                            Submit
-                          </button>
-                        </div>
-                      </code>
-                    </div>
-                    <div onClick={() => setShowAddEventModal(false)}></div>
-                  </div>
-                )}
-              </Fragment>
-            </div>
-
-            <div className="App">
-
-              {/* <div>
-                <FamilyCalendar />
-              </div> */}
-              <Footer />
-            </div >
-          </div>
+          <Switch>
+            {/* <Route>
+              <App />
+            </Route> */}
+            <Route path="/ChatApp">
+              <ChatApp />
+            </Route>
+            <Route path="/Item">
+              <Item />
+            </Route>
+            <Route path="/CalendarApp">
+              <CalendarApp />
+            </Route>
+            <Route path="/Login">
+              <Login />
+            </Route>
+          </Switch>
         </div>
+
       </Router>
     </ApolloProvider>
   );
 }
 
-export default App
+export default App;

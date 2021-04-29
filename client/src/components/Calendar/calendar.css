@@ -1,50 +1,7 @@
-header {
-  position: fixed;
-  width: 100vw;
-  height: 80px;
-  top: 0;
-  background: #4f6995;
-  z-index: 30;
-  box-shadow: 0 0 10px #0002;
+.calendar-margin {
+  margin: 10px;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1000px;
-  margin: auto;
-  padding: 0 20px;
-}
-
-.header ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.header a {
-  text-decoration: none;
-  color: #c4dce9;
-  font-size: 1.1rem;
-}
-
-.header a:hover {
-  color: white;
-  border-bottom: 1px solid #c4dce9;
-}
-
-.header h1 {
-  font-family: 'Aladin', cursive;
-  color: white;
-  font-size: 2.5rem;
-  margin: 1rem;
-}
-
-.header .mobileMenu {
-  display: none;
-}
 
 button {
   cursor: pointer;
@@ -53,7 +10,6 @@ button {
 h2 {
   text-align: center;
   font-size: 2.4rem;
-  font-family: 'Aladin', cursive;
   padding-top: 120px;
   margin-top: -100px;
   margin-bottom: 2rem;
@@ -137,21 +93,15 @@ pre {
   border: none;
   height: 24px;
   border-radius: 10px;
-  padding: 0 10px;
+  margin: 10px;
+  padding: 0px 10px 0px 10px;
   font-size: 0.8rem;
   background: #131324;
   color: white;
   font-weight: bold;
 }
 
-.timeDisplay {
-  border-radius: 0 10px 10px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 0;
-  font-size: 0.9rem;
-}
+
 
 .options input[type='number'] {
   width: 60px;
@@ -211,18 +161,6 @@ pre {
   padding-left: 5px;
 }
 
-footer {
-  background: #4f6995;
-  padding: 1rem;
-}
-
-footer p {
-  font-size: 0.9rem;
-  color: white;
-  line-height: 1rem;
-  margin: 0;
-}
-
 .addEventModal {
   position: fixed;
   top: 0;
@@ -251,10 +189,6 @@ footer p {
   width: 100vw;
   height: 100vh;
   background: #000d;
-}
-
-footer p a {
-  color: white;
 }
 
 .bmc {
