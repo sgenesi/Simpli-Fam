@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from "../../assets/images/Logo.png";
+import Logo from "../../assets/images/Logo-2.png";
 import Auth from '../../utils/auth';
 import Navbar from 'react-bootstrap/Navbar'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -16,17 +16,18 @@ const Header = () => {
     };
 
     return (
-        <Navbar bg="warning" expand="lg" sticky="top">
-            <Navbar.Brand href="/home">
-                <img
-                    src={Logo}
-                    width="200"
-                    height="140"
-                    className="d-inline-block align-top"
-                    alt="SimpliFam logo"
-                />
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        // <Navbar bg="warning" expand="lg" sticky="top">
+        <Navbar.Brand href="/home">
+            <img
+                src={Logo}
+                width="200"
+                height="140"
+                className="d-inline-block align-top"
+                alt="SimpliFam logo"
+            />
+        </Navbar.Brand>
+    );
+    {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                     <Dropdown as={ButtonGroup}>
@@ -41,8 +42,7 @@ const Header = () => {
                     </Dropdown>
                 </Nav>
             </Navbar.Collapse>
-        </Navbar >
-    );
+        </Navbar > */}
 };
 
 export default Header;

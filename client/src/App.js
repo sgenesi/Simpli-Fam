@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Logo from "./assets/images/Logo.png";
+import Logo from "./assets/images/Logo-2.png";
 
 import { Link } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import "./App.css";
 // import "../src/components/Calendar/calendar.css"
-import Item from "./components/Grocery/index";
+import Grocery from "./components/Item";
 import RevoCalendar from 'revo-calendar'
 import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
@@ -29,7 +29,6 @@ import CalendarApp from "./components/Calendar/calendar";
 
 
 import Home from './Pages/Home';
-import GroceryList from './Pages/GroceryList';
 // import './components/Chat/ChatApp.css';
 import ChatApp from "./components/Chat/ChatApp";
 
@@ -56,7 +55,7 @@ function App() {
 
         <div>
           <nav>
-            <h1><a href="/">SimpliFam</a></h1>
+            <Header />
             <ul>
               {/* <li>
                 <Link to="/">Home</Link>
@@ -65,7 +64,7 @@ function App() {
                 <Link to="/ChatApp" class="nav-link">Family Chat</Link>
               </li>
               <li>
-                <Link to="/Item" class="nav-link">Grocery List</Link>
+                <Link to="/Grocery" class="nav-link">Grocery List</Link>
               </li>
               <li>
                 <Link to="/CalendarApp" class="nav-link">Calendar</Link>
@@ -83,8 +82,8 @@ function App() {
             <Route path="/ChatApp">
               <ChatApp />
             </Route>
-            <Route path="/Item">
-              <Item />
+            <Route path="/Grocery">
+              <Grocery />
             </Route>
             <Route path="/CalendarApp">
               <CalendarApp />
@@ -94,7 +93,7 @@ function App() {
             </Route>
           </Switch>
         </div>
-
+        {/* <Footer /> */}
       </Router>
     </ApolloProvider>
 

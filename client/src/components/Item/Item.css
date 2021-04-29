@@ -1,3 +1,4 @@
+
 .complete{
     text-decoration: line-through;
     text-decoration-color: #023047;
@@ -10,3 +11,6 @@
       color: black;
 } 
 
+p{
+    font-family: cursive;
+}
