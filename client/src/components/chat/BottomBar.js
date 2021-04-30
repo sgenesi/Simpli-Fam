@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     bottom: 0,
     top: 'auto',
+    backgroundColor: '#023047',
   },
   inputContainer: {
     backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -31,6 +32,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: '#fb8500',
   },
   inputRoot: {
     color: 'inherit',
@@ -38,6 +40,7 @@ const useStyles = makeStyles(theme => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
     width: '100%',
+    color: '#ffb703',
   },
 }));
 
