@@ -17,7 +17,7 @@ const Header = () => {
 
     return (
         // <Navbar bg="warning" expand="lg" sticky="top">
-        <Navbar.Brand href="/home">
+        <Navbar.Brand href="/">
             <img
                 src={Logo}
                 width="200"

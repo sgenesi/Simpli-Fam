@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,10 +20,9 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from "./Pages/Login";
-import Signup from './Pages/Signup';
+import Login from "./pages/Login";
 import CalendarApp from "./components/Calendar/calendar";
-// import Home from './pages/Home';
+import Home from './pages/Home';
 
 // import './components/Chat/ChatApp.css';
 // import ChatApp from "./components/Chat/ChatApp";
@@ -44,30 +43,25 @@ function App() {
           <nav>
             <Header />
             <ul>
-              {/* <li>
-                <Link to="/">Home</Link>
-              </li> */}
+              <li>
+                <Link to="/Login" class="nav-link">Login/Sign Up</Link>
+              </li>
+              <li>
+                <Link to="/CalendarApp" class="nav-link">Calendar</Link>
+              </li>
+              <li>
+                <Link to="/Grocery" class="nav-link">Grocery List</Link>
+              </li>
               {/* <li>
                 <Link to="/ChatApp" class="nav-link">Family Chat</Link>
               </li> */}
-              <li>
-                <Link to="/Grocery" className="nav-link">Grocery List</Link>
-              </li>
-              <li>
-                <Link to="/CalendarApp" className="nav-link">Calendar</Link>
-              </li>
-              <li>
-                <Link to="/Login" className="nav-link">Login</Link>
-              </li>
-              <li>
-                <Link to="/Signup" className="nav-link">Sign Up</Link>
-              </li>
             </ul>
           </nav>
 
           <Switch>
-            {/* <Route>
-              <App />
+            <Route exact path="/" component={Home} />
+            {/* <Route path="/Home">
+              <Home />
             </Route> */}
             {/* <Route path="/ChatApp">
               <ChatApp />
@@ -81,14 +75,15 @@ function App() {
             <Route path="/Login">
               <Login />
             </Route>
-            <Route path="/Signup">
+            {/* <Route path="/Signup">
               <Signup />
-            </Route>
+            </Route> */}
           </Switch>
         </div>
-        {/* <Footer /> */}
+
+        <Footer />
       </Router>
-    </ApolloProvider>
+    </ApolloProvider >
 
   );
 }
