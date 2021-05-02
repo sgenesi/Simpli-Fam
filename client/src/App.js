@@ -57,28 +57,25 @@ function App() {
           <nav>
             <Header />
             <ul>
-              {/* <li>
-                <Link to="/">Home</Link>
-              </li> */}
               <li>
-                <Link to="/ChatApp" class="nav-link">Family Chat</Link>
-              </li>
-              <li>
-                <Link to="/Grocery" class="nav-link">Grocery List</Link>
+                <Link to="/Login" class="nav-link">Login/Sign Up</Link>
               </li>
               <li>
                 <Link to="/CalendarApp" class="nav-link">Calendar</Link>
               </li>
               <li>
-                <Link to="/Login" class="nav-link">Login</Link>
+                <Link to="/Grocery" class="nav-link">Grocery List</Link>
+              </li>
+              <li>
+                <Link to="/ChatApp" class="nav-link">Family Chat</Link>
               </li>
             </ul>
           </nav>
 
           <Switch>
-            {/* <Route>
-              <App />
-            </Route> */}
+            <Route path="/Home">
+              <Home />
+            </Route>
             <Route path="/ChatApp">
               <ChatApp />
             </Route>
@@ -93,6 +90,7 @@ function App() {
             </Route>
           </Switch>
         </div>
+
         {/* <Footer /> */}
       </Router>
     </ApolloProvider>

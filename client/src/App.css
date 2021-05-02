@@ -203,3 +203,30 @@ nav ul {
   color: orange;
   font-weight: bold;
 }
+
+.right-align {
+  text-align: right;
+  color: black;
+}
+
+.left-align {
+  text-align: left;
+  color: black;
+}
+
+.center {
+  text-align: center;
+  color: black;
+}
+
+.blue {
+  background-color: #dcf2fc;
+}
+
+.padding {
+  padding: 50px 20px;
+}
+
+.bottom-padding {
+  padding: 150px 20px 10px 20px;
+}
