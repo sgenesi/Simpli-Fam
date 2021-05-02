@@ -1,25 +1,24 @@
 import React from 'react';
-import CalendarApp from '../components/Calendar/calendar';
+import '../../src/App.css';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
 import QUERY_USER from '../utils/queries';
 
 const Home = () => {
-  const loggedIn = Auth.loggedIn();
 
     return (
         <main>
-                    <section class='padding'>
+            <section class='padding'>
                 <div>
                     <h3 class="center">A simple way to organize your family</h3>
                 </div>
                 <div>
-                  <p class="center">say something more here about our app because it is awesome and totally useful and everyone loves it and its perfect no errors anywhere</p>
+                    <p class="center">SimpliFam is a one stop shop where you can keep your family organized with a family calendar and grocery list.</p>
                 </div>
             </section>
 
-        <section class='blue padding'>
+            <section class='blue padding'>
                 <div>
                     <h3 class="right-align">Calendar</h3>
                 </div>
@@ -52,7 +51,7 @@ const Home = () => {
 
             <section class='bottom-padding'>
                 <div>
-                  <p class="center">Made with frustration by Robert, Staci, Lexie, and Micah</p>
+                    <p class="center">Made with frustration by Robert, Staci, Lexie, and Micah</p>
                 </div>
             </section>
         </main>
