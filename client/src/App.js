@@ -20,8 +20,8 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from "./pages/Login";
-import Signup from './pages/Signup';
+import Login from "./Pages/Login";
+import Signup from './Pages/Signup';
 import CalendarApp from "./components/Calendar/calendar";
 // import Home from './pages/Home';
 
