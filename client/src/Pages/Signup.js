@@ -1,39 +1,85 @@
-// // import React from "react";
-// import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-// import React, { useState } from 'react';
-// import { useMutation } from '@apollo/react-hooks';
-// import { LOGIN_USER } from '../utils/mutations';
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-// import "./Login.css";
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_USER } from '../utils/mutations';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
+import Auth from '../utils/auth';
 
-// import Auth from '../utils/auth';
+import "./Login.css";
 
-// const Signup = () => {
-// return (
-// <MDBContainer>
-//   <MDBRow>
-//     <MDBCol md="6">
-//       <form>
-//         <p className="h5 text-center mb-4">Sign up</p>
-//         <div className="grey-text">
-//           <MDBInput label="Your name" icon="user" group type="text" validate error="wrong"
-//             success="right" />
-//           <MDBInput label="Your email" icon="envelope" group type="email" validate error="wrong"
-//             success="right" />
-//           <MDBInput label="Confirm your email" icon="exclamation-triangle" group type="text" validate
-//             error="wrong" success="right" />
-//           <MDBInput label="Your password" icon="lock" group type="password" validate />
-//         </div>
-//         <div className="text-center">
-//           <MDBBtn color="primary">Register</MDBBtn>
-//         </div>
-//       </form>
-//     </MDBCol>
-//   </MDBRow>
-// </MDBContainer>
-// );
-// };
+const Signup = () => {
+  const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+  const [addUser, { error }] = useMutation(ADD_USER);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-// export default Signup;
+  // update state based on form input changes
+  const handleChange = (field, value) => {
+
+    setFormState({
+      ...formState,
+      [field]: value
+    });
+  };
+
+  // submit form
+  const handleSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addUser({
+        variables: { ...formState }
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return (
+    <div className="Signup">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group size="sm" controlId="email">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            autoFocus
+            type="username"
+            size="sm"
+            placeholder="Your Username"
+            value={formState.username}
+            onChange={(e) => handleChange("username", e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size="sm" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            autoFocus
+            type="email"
+            size="sm"
+            placeholder="Your Email"
+            value={formState.email}
+            onChange={(e) => handleChange("email", e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size="sm" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            size="sm"
+            placeholder="Your Password"
+            value={formState.password}
+            onChange={(e) => handleChange("password", e.target.value)}
+          />
+        </Form.Group>
+        <Button block size="sm" type="submit" variant="outline-primary">
+          Signup
+      </Button>
+      </Form>
+    </div>
+  );
+}
+
+export default Signup;
