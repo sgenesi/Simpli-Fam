@@ -26,6 +26,15 @@ p a {
   font-weight: bold;
 }
 
+div._3Ym8d{
+  height: 1000px;
+  width: 100%;
+}
+
+._3Ym8d ._grLKM ul button {
+  font-size: 0.75rem;
+}
+
 p span {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
