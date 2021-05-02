@@ -7,75 +7,9 @@ import RevoCalendar from 'revo-calendar'
 import 'revo-calendar/dist/index.css'
 
 function CalendarApp() {
-
-    var reso1 = new Date()
-    reso1.setHours(17, 0, 0)
-  
-    var reso2 = new Date()
-    reso2.setHours(18, 15, 0)
-  
-    var reso3 = new Date()
-    reso3.setHours(19, 30, 0)
-  
-    var reso4 = new Date()
-    reso4.setHours(20, 45, 0)
-  
-    var lunchWithKevin = new Date()
-    lunchWithKevin.setDate(lunchWithKevin.getDate() + 1)
-    lunchWithKevin.setHours(13, 0, 0)
-  
-    var meetingWithVito = new Date()
-    meetingWithVito.setDate(meetingWithVito.getDate() + 1)
-    meetingWithVito.setHours(16, 30, 0)
-  
-    var dinnerWithFredo = new Date()
-    dinnerWithFredo.setDate(dinnerWithFredo.getDate() + 1)
-    dinnerWithFredo.setHours(20, 0, 0)
-  
-    var dayAfterTomorrow = new Date()
-    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2)
   
     const [eventList, setEvents] = useState([
-      {
-        name: 'Grocery Pickup',
-        date: +reso1,
-        allday: false
-      },
-      {
-        name: 'Nora Dance Practice',
-        date: +reso2,
-        allday: false
-      },
-      {
-        name: 'Elena Soccer Practice',
-        date: +reso3,
-        allday: false
-      },
-      {
-        name: 'BBQ with neighbors',
-        date: +reso4,
-        allday: false
-      },
-      {
-        name: 'Lunch with Kevin',
-        date: +lunchWithKevin,
-        allday: false
-      },
-      {
-        name: 'Parent teacher conference',
-        date: +meetingWithVito,
-        allday: false
-      },
-      {
-        name: 'Dinner with in-laws',
-        date: +dinnerWithFredo,
-        allday: false
-      },
-      {
-        name: 'Day after Tomorrow',
-        date: +dayAfterTomorrow,
-        allday: true
-      }
+
     ])
   
     const [displayColorPicker, setDisplayColorPicker] = useState(0)
