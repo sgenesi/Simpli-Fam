@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Logo from "../../assets/images/Logo-2.png";
 import Auth from '../../utils/auth';
 import Navbar from 'react-bootstrap/Navbar'
@@ -27,22 +27,6 @@ const Header = () => {
             />
         </Navbar.Brand>
     );
-    {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    <Dropdown as={ButtonGroup}>
-                        <Button variant="info">Pages</Button>
-
-                        <Dropdown.Toggle split variant="info" id="dropdown-split-basic" />
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item href="/GroceryList">Grocery List</Dropdown.Item>
-                            <Dropdown.Item href="/action-2">Family Notes</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar > */}
 };
 
 export default Header;
