@@ -8,7 +8,6 @@ import QUERY_USER from '../utils/queries';
 const Home = () => {
   const loggedIn = Auth.loggedIn();
 
-<<<<<<< HEAD
     return (
         <main>
                     <section class='padding'>
@@ -58,19 +57,6 @@ const Home = () => {
             </section>
         </main>
     );
-=======
-  return (
-    <main>
-      <div className="flex-row justify-space-between">
-        {loggedIn && (
-          <div className="col-12 mb-3">
-            <CalendarApp />
-          </div>
-        )}
-      </div>
-    </main>
-  );
->>>>>>> 22612ffdc1dee9975d3c325ef9640b2c60a6fc8a
 };
 
 export default Home;
