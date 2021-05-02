@@ -20,12 +20,12 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from "./pages/Login";
+import Login from "./Pages/Login";
 import CalendarApp from "./components/Calendar/calendar";
-import Home from './pages/Home';
+import Home from './Pages/Home';
 
-// import './components/Chat/ChatApp.css';
-// import ChatApp from "./components/Chat/ChatApp";
+import './components/Chat/ChatApp.css';
+import ChatApp from "./components/Chat/ChatApp";
 
 
 const client = new ApolloClient({
@@ -52,9 +52,9 @@ function App() {
               <li>
                 <Link to="/Grocery" class="nav-link">Grocery List</Link>
               </li>
-              {/* <li>
+              <li>
                 <Link to="/ChatApp" class="nav-link">Family Chat</Link>
-              </li> */}
+              </li>
             </ul>
           </nav>
 
@@ -63,9 +63,9 @@ function App() {
             {/* <Route path="/Home">
               <Home />
             </Route> */}
-            {/* <Route path="/ChatApp">
+            <Route path="/ChatApp">
               <ChatApp />
-            </Route> */}
+            </Route>
             <Route path="/Grocery">
               <Grocery />
             </Route>
