@@ -1,39 +1,101 @@
-// // import React from "react";
-// import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-// import React, { useState } from 'react';
-// import { useMutation } from '@apollo/react-hooks';
-// import { LOGIN_USER } from '../utils/mutations';
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-// import "./Login.css";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from '@apollo/react-hooks';
+import Auth from "../utils/auth";
+import { ADD_USER } from "../utils/mutations";
 
 
-// import Auth from '../utils/auth';
+function Signup(props) {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [addUser, { error }] = useMutation(ADD_USER);
 
-// const Signup = () => {
-// return (
-// <MDBContainer>
-//   <MDBRow>
-//     <MDBCol md="6">
-//       <form>
-//         <p className="h5 text-center mb-4">Sign up</p>
-//         <div className="grey-text">
-//           <MDBInput label="Your name" icon="user" group type="text" validate error="wrong"
-//             success="right" />
-//           <MDBInput label="Your email" icon="envelope" group type="email" validate error="wrong"
-//             success="right" />
-//           <MDBInput label="Confirm your email" icon="exclamation-triangle" group type="text" validate
-//             error="wrong" success="right" />
-//           <MDBInput label="Your password" icon="lock" group type="password" validate />
-//         </div>
-//         <div className="text-center">
-//           <MDBBtn color="primary">Register</MDBBtn>
-//         </div>
-//       </form>
-//     </MDBCol>
-//   </MDBRow>
-// </MDBContainer>
-// );
-// };
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+    try {
+        const mutationResponse = await addUser({
+      variables: {
+        email: formState.email, password: formState.password,
+        firstName: formState.firstName, lastName: formState.lastName
+      }
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+    } catch (e) {
+        console.log(e)
+    }
+  };
 
-// export default Signup;
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value
+    });
+  };
+
+  return (
+    <div className="container my-1">
+      <Link to="/login">
+        ← Go to Login
+      </Link>
+
+      <h2>Signup</h2>
+      <form onSubmit={handleFormSubmit}>
+      <div className="flex-row space-between my-2">
+          <label htmlFor="firstName">First Name:</label>
+          <input
+            placeholder="First"
+            name="firstName"
+            type="firstName"
+            id="firstName"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="email">Last Name:</label>
+          <input
+            placeholder="Last"
+            name="lastName"
+            type="lastName"
+            id="lastName"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="email">Email:</label>
+          <input
+            placeholder="youremail@test.com"
+            name="email"
+            type="email"
+            id="email"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="pwd">Password:</label>
+          <input
+            placeholder="******"
+            name="password"
+            type="password"
+            id="pwd"
+            onChange={handleChange}
+          />
+        </div>
+        {
+          error ? <div>
+            {error.message.includes('duplicate key error') ? <p className='error-text'>That email address is already in our system!</p> : <p className="error-text" >The provided credentials are incorrect</p>}
+            
+          </div> : null
+        }
+        <div className="flex-row flex-end">
+          <button type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+
+}
+
+export default Signup;

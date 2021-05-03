@@ -23,32 +23,35 @@ import Footer from './components/Footer';
 import Login from "./Pages/Login";
 import CalendarApp from "./components/Calendar/calendar";
 
-// import Signup from "./Pages/Signup";
+import Signup from "./Pages/Signup";
 // import Nav from './components/Nav';
 // import Signup from "./Pages/Signup";
 
 
 import Home from './Pages/Home';
 // import './components/Chat/ChatApp.css';
-import ChatApp from "./components/Chat/ChatApp";
+// import ChatApp from "./components/Chat/ChatApp";
 
 
-const client = new ApolloClient({
-  request: operation => {
-    const token = localStorage.getItem('id_token');
 
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    });
-  },
-  uri: '/graphql'
-});
 
 function App() {
 
+  const client = new ApolloClient({
+    request: operation => {
+      const token = localStorage.getItem('id_token');
+  
+      operation.setContext({
+        headers: {
+          authorization: token ? `Bearer ${token}` : ''
+        }
+      });
+    },
+    uri: '/graphql'
+  });
 
+
+  
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -57,13 +60,10 @@ function App() {
           <nav>
             <Header />
             <ul>
-              {/* <li>
+              <li>
                 <Link to="/">Home</Link>
-              </li> */}
-              <li>
-                <Link to="/ChatApp" class="nav-link">Family Chat</Link>
-              </li>
-              <li>
+            </li>
+              <li> 
                 <Link to="/Grocery" class="nav-link">Grocery List</Link>
               </li>
               <li>
@@ -72,15 +72,17 @@ function App() {
               <li>
                 <Link to="/Login" class="nav-link">Login</Link>
               </li>
+              <li>
+                <Link to="/Signup" class="nav-link">Signup</Link>
+              </li>
+            
             </ul>
           </nav>
 
           <Switch>
-            {/* <Route>
+            <Route>
               <App />
-            </Route> */}
-            <Route path="/ChatApp">
-              <ChatApp />
+           
             </Route>
             <Route path="/Grocery">
               <Grocery />
@@ -91,13 +93,16 @@ function App() {
             <Route path="/Login">
               <Login />
             </Route>
+            <Route path="/Signup">
+            <Signup />
+            </Route>
           </Switch>
         </div>
-        {/* <Footer /> */}
+         <Footer />
       </Router>
     </ApolloProvider>
 
   );
 }
 
-export default App;
+export default App; 
