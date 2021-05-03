@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Item = () => {
-	
+
 	const [items, setItems] = useState([
 		// { itemName: 'item 1', quantity: 1, isSelected: false },
 		// { itemName: 'item 2', quantity: 3, isSelected: true },
@@ -63,7 +63,7 @@ const Item = () => {
 	};
 
 	return (
-    
+
 		<div className='app-background'>
 			<div className='main-container'>
 				<div className='add-item-box'>
