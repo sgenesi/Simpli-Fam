@@ -1,16 +1,12 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-// import Logo from "./assets/images/Logo-2.png";
-
 import { Link } from 'react-router-dom';
-
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-// import { ApolloClient, InMemoryCache } from '@apollo/client';
+
 
 import "./App.css";
 // import "../src/components/Calendar/calendar.css"
@@ -20,13 +16,12 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from "./Pages/Login";
-import Signup from './Pages/Signup';
+import Login from "./pages/Login";
 import CalendarApp from "./components/Calendar/calendar";
-import Home from './Pages/Home';
+import Home from './pages/Home';
 
-// import './components/Chat/ChatApp.css';
-// import ChatApp from "./components/Chat/ChatApp";
+import './components/Chat/ChatApp.css';
+import ChatApp from "./components/Chat/ChatApp";
 
 
 const client = new ApolloClient({
@@ -60,8 +55,10 @@ function App() {
           </nav>
 
           <Switch>
-            <Route path="/Home">
-              <Home />
+            <Route exact path="/" component={Home} />
+          
+            <Route path="/ChatApp">
+              <ChatApp />
             </Route>
             <Route path="/Grocery">
               <Grocery />
@@ -72,15 +69,13 @@ function App() {
             <Route path="/Login">
               <Login />
             </Route>
-            <Route path="/Signup">
-              <Signup />
-            </Route>
+           
           </Switch>
         </div>
 
-        {/* <Footer /> */}
+        <Footer />
       </Router>
-    </ApolloProvider>
+    </ApolloProvider >
 
   );
 }
