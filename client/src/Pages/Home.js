@@ -14,7 +14,7 @@ const Home = () => {
                     <h3 class="center">A simple way to organize your family</h3>
                 </div>
                 <div>
-                    <p class="center">SimpliFam is a one stop shop where you can keep your family organized with a family calendar and grocery list.</p>
+                    <p class="center">SimpliFam is a one stop shop where you can keep your family organized with a family calendar, grocery list, and chat app.</p>
                 </div>
             </section>
 
