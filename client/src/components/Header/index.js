@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import Logo from "../../assets/images/Logo-2.png";
 import Auth from '../../utils/auth';
 import Navbar from 'react-bootstrap/Navbar'
@@ -16,7 +15,6 @@ const Header = () => {
     };
 
     return (
-        // <Navbar bg="warning" expand="lg" sticky="top">
         <Navbar.Brand href="/">
             <img
                 src={Logo}
