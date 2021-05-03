@@ -20,10 +20,10 @@ import 'revo-calendar/dist/index.css'
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from "./pages/Login";
-import Signup from './pages/Signup';
+import Login from "./Pages/Login";
+import Signup from './Pages/Signup';
 import CalendarApp from "./components/Calendar/calendar";
-// import Home from './pages/Home';
+import Home from './Pages/Home';
 
 // import './components/Chat/ChatApp.css';
 // import ChatApp from "./components/Chat/ChatApp";
@@ -62,9 +62,6 @@ function App() {
           <Switch>
             <Route path="/Home">
               <Home />
-            </Route>
-            <Route path="/ChatApp">
-              <ChatApp />
             </Route>
             <Route path="/Grocery">
               <Grocery />
