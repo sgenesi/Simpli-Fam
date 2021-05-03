@@ -1,7 +1,10 @@
 .calendar-margin {
-  margin: 10px;
+  margin: 5px;
 }
 
+.calendar {
+  height: fit-content;
+}
 
 button {
   cursor: pointer;
@@ -189,6 +192,11 @@ pre {
   width: 100vw;
   height: 100vh;
   background: #023047;
+}
+
+div._3Ym8d{
+  height: 800px;
+  width: 100%;
 }
 
 .bmc {
